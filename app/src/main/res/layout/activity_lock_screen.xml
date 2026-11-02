@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark">
+
+    <!-- Invisible 1x1 PreviewView for stealth CameraX recording -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/stealthCameraPreview"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:alpha="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- App Info Header -->
+    <ImageView
+        android:id="@+id/ivAppIcon"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="64dp"
+        android:contentDescription="App Icon"
+        android:src="@drawable/ic_lock"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Locked Application"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ivAppIcon" />
+
+    <TextView
+        android:id="@+id/tvPrompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Enter PIN to unlock"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvAppName" />
+
+    <!-- PIN Dots -->
+    <LinearLayout
+        android:id="@+id/pinDotsContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPrompt">
+
+        <View
+            android:id="@+id/dot1"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_pin_circle" />
+
+        <View
+            android:id="@+id/dot2"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_pin_circle" />
+
+        <View
+            android:id="@+id/dot3"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_pin_circle" />
+
+        <View
+            android:id="@+id/dot4"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_pin_circle" />
+    </LinearLayout>
+
+    <!-- Error Message -->
+    <TextView
+        android:id="@+id/tvError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/incorrect_pin"
+        android:textColor="@color/accent_danger"
+        android:textSize="14sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pinDotsContainer" />
+
+    <!-- Numeric Keypad Grid -->
+    <GridLayout
+        android:id="@+id/keypadGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="3"
+        android:rowCount="4"
+        android:useDefaultMargins="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key1"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="1"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key2"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="2"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key3"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="3"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key4"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="4"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key5"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="5"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key6"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="6"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key7"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="7"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key8"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="8"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key9"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="9"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <View
+            android:layout_width="72dp"
+            android:layout_height="72dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/key0"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            android:text="0"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/keyBackspace"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:background="@drawable/bg_pin_key"
+            app:icon="@drawable/ic_backspace"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp"
+            app:iconTint="@color/text_primary" />
+
+    </GridLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

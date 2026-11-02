@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Personal AppLock</string>
+    <string name="accessibility_service_description">Used by Personal AppLock to detect when locked applications are opened to display the security lock screen.</string>
+    <string name="title_locked_apps">Locked Apps</string>
+    <string name="title_intruder_vault">Intruder Vault</string>
+    <string name="btn_set_pin">Set Master PIN</string>
+    <string name="btn_change_pin">Change Master PIN</string>
+    <string name="btn_permissions">Grant Required Permissions</string>
+    <string name="status_permissions_ok">All Permissions Granted</string>
+    <string name="status_permissions_missing">Permissions Needed (Tap to Grant)</string>
+    <string name="enter_pin">Enter Master PIN</string>
+    <string name="confirm_pin">Confirm Master PIN</string>
+    <string name="incorrect_pin">Incorrect PIN! Try again.</string>
+    <string name="pin_saved">Master PIN saved successfully!</string>
+    <string name="no_intruders">No intruders detected yet! Your apps are safe.</string>
+    <string name="caught_at">Caught at: %1$s</string>
+    <string name="target_app">Target: %1$s</string>
+    <string name="delete_recording">Delete Recording</string>
+</resources>
